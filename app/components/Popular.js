@@ -1,4 +1,28 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+const SelectLanguage = (props) => {
+    const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
+    return(
+        <ul className='languages'>
+            {languages.map(lang => {
+                return (
+                    <li className='language'
+                        key={lang}
+                        onClick={props.onSelect.bind(null, lang)}
+                        style={lang === props.selectedLanguage ? { color: '#d0021b'} : null}>
+                        {lang}
+                    </li>
+                );
+            })}
+        </ul>
+    );
+}
+
+SelectLanguage.PropTypes = {
+    onSelect: PropTypes.func.isRequired,
+    selectedLanguage: PropTypes.string.isRequired
+}
 
 class Popular extends Component {
     constructor(props) {
@@ -27,10 +51,14 @@ class Popular extends Component {
     }
 
     render() {
-        const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
+        
         return(
             <div>
-                <ul className='languages'>
+                <SelectLanguage 
+                    selectedLanguage={this.state.selectedLanguage}
+                    onSelect={this.updateLanguage}
+                    />
+                {/*<ul className='languages'>*/}
 
                    {/* 1. Bind */}
                     {/*{languages.map(function(lang) {
@@ -78,7 +106,7 @@ class Popular extends Component {
                     })}*/}
                     {/*-----------------------------------------------------------*/}
                     {/*5. Declaring bind again*/}
-                    {languages.map(function(lang) {
+                    {/*{languages.map(function(lang) {
                         return(
                             <li 
                                 key={lang}
@@ -88,7 +116,7 @@ class Popular extends Component {
                             </li>
                         );
                     }, this)}
-                </ul>
+                </ul>*/}
             </div>
         );
     }
