@@ -2,6 +2,9 @@ body {
     font-family: 'Helvetica Neue';
 }
 
+ul {
+    list-style: none;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -16,4 +19,26 @@ body {
     margin: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.repo-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.repo-container ul {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.repo-container li {
+    margin: 1em;
+    padding: 1em;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 30%;
 }
