@@ -7,8 +7,7 @@ import {
 import Popular from './Popular';
 import Nav from './Nav';
 import Home from './Home';
-
-const Battle = () => <h1>Battle me</h1>;
+import Battle from './Battle';
 
 class App extends Component {
     render() {
@@ -19,6 +18,7 @@ class App extends Component {
                         <div className='container'>
                             <Route exact path='/' component={Home}/>
                             <Route path='/popular' component={Popular}/>
+                            <Route path='/battle' component={Battle}/>
                         </div>
                     </div>
                 </Router>
