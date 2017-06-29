@@ -77,7 +77,7 @@ class Popular extends Component {
                     onSelect={this.updateLanguage} />
                 <div className='repo-container'>
                     {!this.state.repos
-                    ? <p>Loading....</p>
+                    ? <div className='spinner'></div>
                     : <RepoGrid repos={this.state.repos}/>}
                 </div>
             </div>

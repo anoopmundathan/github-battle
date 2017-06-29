@@ -10,6 +10,13 @@ a {
 ul {
     list-style: none;
 }
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 30%;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -17,8 +24,7 @@ ul {
 
 .languages {
     list-style: none;
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 .languages li {
     margin: 10px;
@@ -33,13 +39,53 @@ ul {
 
 .repo-container ul {
     margin: 0;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .repo-container li {
     margin: 1em;
     padding: 1em;
+}
+
+.loading {
+    text-align: center;
+}
+
+.spinner {
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    border: solid tomato;
+    border-width: 5px 0px 0px 0px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;          
+    border-radius: 50%;
+    -webkit-animation: spin 0.5s infinite linear;
+    -moz-animation: spin 0.5s infinite linear;
+    -o-animation: spin 0.5s infinite linear;
+    animation: spin 0.5s infinite linear;
+
+    /*border: solid 3px rgba(0,0,0,0);
+    border-top-color: #DB73D7;*/
+}
+
+@-webkit-keyframes spin {
+  from {-webkit-transform: rotate(0deg);}
+  to   {-webkit-transform: rotate(359deg);}
+}
+ 
+@-moz-keyframes spin {
+  from {-moz-transform: rotate(0deg);}
+  to   {-moz-transform: rotate(359deg);}
+}
+ 
+@-o-keyframes spin {
+  from {-o-transform: rotate(0deg);}
+  to   {-o-transform: rotate(359deg);}
+}
+ 
+@keyframes spin{
+  from {transform: rotate(0deg);}
+  to   {transform: rotate(359deg);}
 }
 
 .nav-container {
@@ -69,6 +115,7 @@ ul {
     display: block;
     padding: 7px 0;
     margin: 10px auto;
+    cursor: pointer;
 }
 
 .button:active {
@@ -81,8 +128,47 @@ ul {
     text-decoration: none;
 }
 
-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 30%;
+.player-container {
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    background: #fafafb;
+}
+
+.player-one,
+.player-two {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+.input {
+    height: 10px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+@media screen and (min-width: 760px) {
+
+    .languages {
+        display: flex;
+        justify-content: center;
+    }
+
+    .repo-container ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .player-container {
+        display: flex;
+    }
+    .player-container,
+    .player-one,
+    .player-two {
+        width: 50%;
+    }
+    .input {
+        width: 80%;
+    }
 }

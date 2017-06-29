@@ -6,7 +6,7 @@ const Home = () => {
         <div className='home-container'>
             <h1>Github Battle. Battle with your friends</h1>
             <Link className='button' to='/battle'>
-                Button
+                Battle
             </Link>
         </div>
     );
