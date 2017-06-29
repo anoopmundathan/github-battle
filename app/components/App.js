@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
-    Route, 
-    Link
+    Route
 } from 'react-router-dom';
 
 import Popular from './Popular';
+import Nav from './Nav';
+import Home from './Home';
 
-const Home = () => <div>Home component</div>
-const Battle = () => <div>Battle component</div>
+const Battle = () => <h1>Battle me</h1>;
 
 class App extends Component {
     render() {
         return(
                <Router>
                    <div>
-                        <ul className='nav-container'>
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/battle'>Battle</Link></li>
-                            <li><Link to='/popular'>Popular</Link></li>
-                        </ul>
+                       <Nav />
                         <div className='container'>
-                            <Route path='/popular' component={Popular}/>
                             <Route exact path='/' component={Home}/>
-                            <Route path='/battle' component={Battle}/>
+                            <Route path='/popular' component={Popular}/>
                         </div>
                     </div>
                 </Router>
