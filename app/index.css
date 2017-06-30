@@ -128,24 +128,45 @@ img {
     text-decoration: none;
 }
 
-.player-container {
+.battle-container {
     margin: 0 auto;
     width: 100%;
     align-items: center;
     background: #fafafb;
 }
 
-.player-one,
-.player-two {
-    margin: 5px;
-    padding: 5px;
+.player {
+    margin: 10px auto;
     text-align: center;
+}
+
+.header {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .input {
     height: 10px;
     font-size: 16px;
     padding: 10px;
+}
+
+.reset {
+    background: transparent;
+    border: none;
+    color: #d0021d;
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.reset:hover {
+    cursor: pointer;
 }
 
 @media screen and (min-width: 760px) {
@@ -161,13 +182,16 @@ img {
     }
 
     .player-container {
-        display: flex;
-    }
-    .player-container,
-    .player-one,
-    .player-two {
         width: 50%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
     }
+    /*.player-container,
+    .player {
+        width: 50%;
+    }*/
+
     .input {
         width: 80%;
     }
