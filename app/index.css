@@ -128,7 +128,7 @@ img {
     text-decoration: none;
 }
 
-.player-container {
+.battle-container {
     margin: 0 auto;
     width: 100%;
     align-items: center;
@@ -136,8 +136,21 @@ img {
 }
 
 .player {
+<<<<<<< HEAD
     margin: 5px;
+=======
+    margin: 10px auto;
     text-align: center;
+}
+
+.header {
+    display: block;
+>>>>>>> Battle
+    text-align: center;
+    font-size: 30px;
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .header {
@@ -182,12 +195,20 @@ img {
     }
 
     .player-container {
+        width: 50%;
+        margin: 0 auto;
         display: flex;
+        align-items: center;
     }
+<<<<<<< HEAD
     .player-container,
+=======
+    /*.player-container,
+>>>>>>> Battle
     .player {
         width: 50%;
-    }
+    }*/
+
     .input {
         width: 80%;
     }
