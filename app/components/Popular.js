@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import fetchRepo from '../utl/api';
+import { fetchRepo } from '../utl/api';
 
 const SelectLanguage = (props) => {
     const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
