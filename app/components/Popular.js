@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import Loading from './Loading';
 import { fetchRepo } from '../utl/api';
 
 const SelectLanguage = (props) => {
@@ -84,7 +86,7 @@ class Popular extends Component {
                     onSelect={this.updateLanguage} />
                 <div className='repo-container'>
                     {!this.state.repos
-                    ? <div className='spinner'></div>
+                    ? <Loading text='Waiting'/>
                     : <RepoGrid repos={this.state.repos}/>}
                 </div>
             </div>

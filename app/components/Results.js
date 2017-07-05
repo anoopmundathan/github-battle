@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { battle } from '../utl/api';
 import PlayerPreview from './PlayerPreview';
+import Loading from './Loading';
 
 const Profile = (props) => {
     const profile = props.profile;
@@ -96,7 +97,7 @@ class Results extends Component {
 
         if (loading === true) {
             return(
-                <p>Loading...</p>
+                <Loading wait={300}/>
             );
         } else {
             return(
