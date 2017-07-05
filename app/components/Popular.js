@@ -26,10 +26,17 @@ SelectLanguage.PropTypes = {
 }
 
 const RepoGrid = (props) => {
-    const repoList = props.repos.map(repo => {
+    const repoList = props.repos.map((repo, index) => {
         return(
-            <li>
-                <img src={repo.owner.avatar_url} />
+            <li key={repo.name}>
+                <p>#{index + 1}</p>
+                <a href={repo.html_url}>
+                    <img 
+                        src={repo.owner.avatar_url} 
+                        alt={`Avatar for ${repo.owner.login}`}/>
+                </a>
+                <p>{repo.name}</p>
+                <p>{repo.stargazers_count}</p>
             </li>
         );
     });

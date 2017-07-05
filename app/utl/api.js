@@ -57,8 +57,9 @@ function battle(players) {
 }
 
 function fetchRepo(language) {
-    let apiUrl = `https://api.github.com/search/repositories?q=${language}&sort=stars&order=desc`;
-    return fetch(apiUrl)
+    const encodeURI = window.encodeURI(`https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`);
+
+    return fetch(encodeURI)
         .then(response => response.json())
         .then(data => data.items);
 }

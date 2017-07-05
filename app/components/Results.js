@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import queryString from 'query-string';
 import { battle } from '../utl/api';
-
 import PlayerPreview from './PlayerPreview';
+
+const Profile = (props) => {
+    const profile = props.profile;
+    return(
+        <PlayerPreview
+            avatar={profile.avatar_url}
+            username={profile.login}>
+            <ul>
+                {profile.name && <li>{profile.name}</li>}
+                {profile.location && <li>{profile.location}</li>}
+                <li>{`Followers: ${profile.followers}`}</li>
+                <li>{`Following: ${profile.following}`}</li>
+                <li>{`Public Repos: ${profile.public_repos}`}</li>
+                {profile.blog && <li><a href={profile.blog}>{profile.blog}</a></li>}
+            </ul>
+        </PlayerPreview>
+    );
+}
+
+Profile.PropTypes = {
+    profile: PropTypes.object.isRequired
+}
 
 const Player = (props) => {
     return(
         <div className='player'>
             <h1 className='header'>{props.label}</h1>
             <h3 style={{textAlign: 'center'}}>{props.score}</h3>
+            <Profile profile={props.profile}/>
         </div>
     );
 }
@@ -58,6 +79,7 @@ class Results extends Component {
     }
 
     render() {     
+        
         const error = this.state.error;
         const winner = this.state.winner;
         const looser = this.state.looser;
@@ -81,23 +103,15 @@ class Results extends Component {
                 <div className='results-container'>     
                     <div className='result-container'>
                         <Player
-                        label='Winner'
-                        score={winner.score}/>
-                        <PlayerPreview
-                            avatar={winner.profile.avatar_url}
-                            username={winner.profile.login}>
-                            Hello
-                        </PlayerPreview>
+                            label='Winner'
+                            score={winner.score}
+                            profile={winner.profile}/>
                     </div>                   
                     <div className='result-container'>
                         <Player
                             label='Looser'
-                            score={looser.score}/>       
-                        <PlayerPreview
-                            avatar={looser.profile.avatar_url}
-                            username={looser.profile.login}>
-                            Hello
-                        </PlayerPreview>
+                            score={looser.score}
+                            profile={looser.profile}/>
                     </div>
                 </div>
             );

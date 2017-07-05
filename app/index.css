@@ -44,6 +44,7 @@ img {
 .repo-container li {
     margin: 1em;
     padding: 1em;
+    text-align: center;
 }
 
 .loading {
