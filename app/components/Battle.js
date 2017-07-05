@@ -1,29 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-const PlayerPreview = (props) => {
-    return(
-        <div className='player'>
-            <img 
-                src={props.avatar}
-                alt={'Avatar for ' + props.username}/>
-            <h3>@{props.username}</h3>
-            <button 
-                className='reset'
-                type='button'
-                onClick={props.onReset.bind(null, props.id)}>
-                    Reset
-            </button>
-        </div>
-    );
-}
-PlayerPreview.PropTypes = {
-    id: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    onReset: PropTypes.func.isRequired
-}
+import PlayerPreview from './PlayerPreview';
 
 class Player extends Component {
     
@@ -126,11 +104,15 @@ class Battle extends Component {
                     }
                     {playerOneImage !== null &&
                         <PlayerPreview 
-                            id='playerOne'
                             avatar={this.state.playerOneImage}
-                            username={this.state.playerOneName}
-                            onReset={this.onReset.bind(this)}
-                        />
+                            username={this.state.playerOneName}>
+                            <button 
+                                className='reset'
+                                type='button'
+                                onClick={this.onReset.bind(null, 'playerOne')}>
+                                Reset
+                            </button>
+                        </PlayerPreview>
                     }
                     {!playerTwoName &&
                         <Player 
@@ -140,11 +122,15 @@ class Battle extends Component {
                     }
                     {playerTwoImage !== null &&
                         <PlayerPreview 
-                            id='playerTwo'
                             avatar={this.state.playerTwoImage}
-                            username={this.state.playerTwoName}
-                            onReset={this.onReset.bind(this)}
-                        />
+                            username={this.state.playerTwoName}>
+                             <button 
+                                className='reset'
+                                type='button'
+                                onClick={this.onReset.bind(null, 'playerTwo')}>
+                                Reset
+                            </button>
+                        </PlayerPreview>
                     }
                 </div>
 

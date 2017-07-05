@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import queryString from 'query-string';
 import { battle } from '../utl/api';
 
+import PlayerPreview from './PlayerPreview';
+
+const Player = (props) => {
+    return(
+        <div className='player'>
+            <h1 className='header'>{props.label}</h1>
+            <h3 style={{textAlign: 'center'}}>{props.score}</h3>
+        </div>
+    );
+}
+
+Player.PropTypes = {
+    label: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
+    profile: PropTypes.object.isRequired
+}
 
 class Results extends Component {
     
@@ -20,11 +39,21 @@ class Results extends Component {
             parsed.playerOneName, 
             parsed.playerTwoName
         ]).then(results => {
+
+            if(results === null) {
+                this.setState({
+                    error: 'There was an error, check github username',
+                    loading: false
+                });
+            }
+
             this.setState({
-                winner: results[0].profile.name,
-                looser: results[1].profile.name,
+                winner: results[0],
+                looser: results[1],
+                error: null,
                 loading: false
-            })
+            });
+
         });
     }
 
@@ -34,15 +63,42 @@ class Results extends Component {
         const looser = this.state.looser;
         const loading = this.state.loading;
 
+        if (error) {
+            return(
+                <div>
+                    <p>{error}</p>
+                    <Link to='/battle'>Reset</Link>
+                </div>
+            );
+        }
+
         if (loading === true) {
             return(
                 <p>Loading...</p>
             );
         } else {
             return(
-                <div>
-                    <h1>Winner: {this.state.winner}</h1>
-                    <h1>Looser: {this.state.looser}</h1>
+                <div className='results-container'>     
+                    <div className='result-container'>
+                        <Player
+                        label='Winner'
+                        score={winner.score}/>
+                        <PlayerPreview
+                            avatar={winner.profile.avatar_url}
+                            username={winner.profile.login}>
+                            Hello
+                        </PlayerPreview>
+                    </div>                   
+                    <div className='result-container'>
+                        <Player
+                            label='Looser'
+                            score={looser.score}/>       
+                        <PlayerPreview
+                            avatar={looser.profile.avatar_url}
+                            username={looser.profile.login}>
+                            Hello
+                        </PlayerPreview>
+                    </div>
                 </div>
             );
         }   
