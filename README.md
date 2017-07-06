@@ -1,6 +1,7 @@
-# react-github-battle - WIP
+# react-github-battle 
 > Created as part of ReactTraining Course
 
+Click here it see [Live demo](https://github-battle-cfea2.firebaseapp.com)
 ## Getting Started
 ### Setup
 ```
